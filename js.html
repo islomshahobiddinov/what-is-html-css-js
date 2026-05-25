@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript — Web Dasturlash O'rganish</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-js">
+  <div class="app" id="app">
+
+    <!-- ── CHAP SIDEBAR ── -->
+    <nav class="left-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">💻</span>
+        <span class="logo-text">WebDasturlash</span>
+      </div>
+      <div class="sidebar-nav">
+        <p class="nav-label">Sahifalar</p>
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link">
+              <span class="nav-link-icon">🌐</span>
+              <span>HTML</span>
+            </a>
+          </li>
+          <li>
+            <a href="css.html" class="nav-link">
+              <span class="nav-link-icon">🎨</span>
+              <span>CSS</span>
+            </a>
+          </li>
+          <li>
+            <a href="js.html" class="nav-link active">
+              <span class="nav-link-icon">⚡</span>
+              <span>JavaScript</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        O'zbek tilida veb dasturlash qo'llanmasi
+      </div>
+    </nav>
+
+    <!-- ── ASOSIY KONTENT ── -->
+    <main class="main-content">
+      <div class="page-hero">
+        <div class="hero-badge">
+          <span>⚡</span> Dasturlash tili
+        </div>
+        <h1 class="hero-title">JavaScript</h1>
+        <p class="hero-sub">
+          Veb-sahifalarni interaktiv va dinamik qiluvchi dasturlash tili. Brauzerda va server tomonida (Node.js) ishlaydi. Dunyo bo'yicha eng mashhur dasturlash tillaridan biri.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Mavzu</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">1995</span>
+            <span class="stat-label">Yaratilgan yil</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">ES2024</span>
+            <span class="stat-label">Joriy versiya</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topics-section">
+        <h2 class="topics-heading">Mavzuni tanlang</h2>
+        <div class="topics-grid" id="topicsGrid"></div>
+      </div>
+    </main>
+
+    <!-- ── O'NG SIDEBAR ── -->
+    <aside class="right-sidebar">
+      <div class="right-empty" id="sidebarEmpty">
+        <div class="right-empty-icon">👆</div>
+        <div class="right-empty-title">Mavzu tanlang</div>
+        <div class="right-empty-sub">Chap tarafdagi mavzulardan birini tanlang va batafsil ma'lumot o'qing</div>
+      </div>
+      <div class="right-content" id="sidebarContent" style="display:none">
+        <div class="topic-hdr">
+          <div class="topic-hdr-top">
+            <div>
+              <div class="topic-hdr-title" id="topicTitle"></div>
+              <div class="topic-hdr-num">JavaScript mavzusi</div>
+            </div>
+            <button class="topic-hdr-close" onclick="closeSidebar()" title="Yopish">✕</button>
+          </div>
+          <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">
+            <span>🔊</span>
+            <span class="voice-text">Tinglash</span>
+          </button>
+          <div class="voice-settings">
+            <span class="voice-settings-label">Ovoz:</span>
+            <select class="voice-select" id="voiceSelect" onchange="changeVoice()">
+              <option>Yuklanmoqda...</option>
+            </select>
+          </div>
+        </div>
+        <div class="topic-body" id="topicBody"></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>initPage('js');</script>
+</body>
+</html>
