@@ -2020,5 +2020,1478 @@ x ??= 7;  // x = x ?? 7</code><span class="code-lang">javascript</span></pre>
         `
       }
     ]
+  },
+
+  react: {
+    title: "React",
+    fullName: "React — UI kutubxonasi",
+    icon: "⚛️",
+    desc: "Facebook tomonidan yaratilgan komponent asosidagi UI kutubxonasi",
+    color: "react",
+    topicsCount: 10,
+    topics: [
+      {
+        id: "react-nima",
+        icon: "⚛️",
+        title: "React nima?",
+        content: `
+<h3>React haqida</h3>
+<p>React — Facebook (hozirgi Meta) tomonidan 2013-yilda yaratilgan ochiq manbali JavaScript kutubxonasi. U foydalanuvchi interfeyslari (UI) ni yaratish uchun mo'ljallangan. React to'liq framework emas — faqat UI qatlami uchun javob beradi.</p>
+
+<h3>React nima uchun kerak?</h3>
+<ul>
+  <li><strong>Komponentlar</strong> — UI ni qayta ishlatiladigan bo'laklarga bo'lish</li>
+  <li><strong>Virtual DOM</strong> — sahifani tez va samarali yangilash</li>
+  <li><strong>Bir tomonlama ma'lumot oqimi</strong> — kod tartibli va bashorat qilinadigan</li>
+  <li><strong>Katta ekotizim</strong> — juda ko'p kutubxona va toollar</li>
+</ul>
+
+<h3>Virtual DOM nima?</h3>
+<p>Oddiy DOM bilan ishlash sekin. React avval o'zgarishlarni xotirada (Virtual DOM) hisoblaydi, keyin faqat o'zgargan qismlarni haqiqiy DOM ga qo'llaydi — bu juda tez ishlaydi.</p>
+
+<h3>React o'rnatish</h3>
+<pre><code class="language-bash"># Yangi React loyiha yaratish (Vite bilan — tavsiya)
+npm create vite@latest mening-loyiham -- --template react
+cd mening-loyiham
+npm install
+npm run dev
+
+# Yoki Create React App (eski usul)
+npx create-react-app mening-loyiham
+cd mening-loyiham
+npm start</code><span class="code-lang">bash</span></pre>
+
+<h3>Loyiha tuzilishi</h3>
+<pre><code class="language-bash">mening-loyiham/
+├── src/
+│   ├── App.jsx        # Asosiy komponent
+│   ├── main.jsx       # Kirish nuqtasi
+│   └── components/    # Komponentlar papkasi
+├── public/
+├── index.html
+└── package.json</code><span class="code-lang">bash</span></pre>
+
+<div class="info-box">⚛️ React — dunyodagi eng mashhur frontend kutubxona. Stack Overflow so'rovnomasida yillar davomida eng ko'p ishlatiladigan framework/kutubxona sifatida e'tirof etilgan.</div>
+        `
+      },
+      {
+        id: "react-jsx",
+        icon: "📝",
+        title: "JSX sintaksis",
+        content: `
+<h3>JSX nima?</h3>
+<p>JSX (JavaScript XML) — JavaScript ichida HTML-ga o'xshash kod yozish imkonini beruvchi sintaksis kengaytmasi. Brauzer JSX ni tushunmaydi — Babel uni oddiy JavaScript ga aylantiradi.</p>
+
+<h3>JSX asoslari</h3>
+<pre><code class="language-jsx">// Oddiy JSX
+const element = &lt;h1&gt;Salom, Dunyo!&lt;/h1&gt;;
+
+// JavaScript ifodalar {} ichida yoziladi
+const ism = "Alisher";
+const element = &lt;h1&gt;Salom, {ism}!&lt;/h1&gt;;
+
+// Hisob-kitob
+const element = &lt;p&gt;2 + 2 = {2 + 2}&lt;/p&gt;;
+
+// Funksiya chaqirish
+const element = &lt;p&gt;{getGreeting()}&lt;/p&gt;;</code><span class="code-lang">jsx</span></pre>
+
+<h3>JSX qoidalari</h3>
+<pre><code class="language-jsx">// 1. Bitta ildiz element (root) bo'lishi kerak
+// Noto'g'ri:
+return (
+  &lt;h1&gt;Sarlavha&lt;/h1&gt;
+  &lt;p&gt;Paragraf&lt;/p&gt;
+);
+
+// To'g'ri (div yoki Fragment bilan o'rash):
+return (
+  &lt;div&gt;
+    &lt;h1&gt;Sarlavha&lt;/h1&gt;
+    &lt;p&gt;Paragraf&lt;/p&gt;
+  &lt;/div&gt;
+);
+
+// Fragment — qo'shimcha div qo'shmasdan
+return (
+  &lt;&gt;
+    &lt;h1&gt;Sarlavha&lt;/h1&gt;
+    &lt;p&gt;Paragraf&lt;/p&gt;
+  &lt;/&gt;
+);</code><span class="code-lang">jsx</span></pre>
+
+<h3>HTML va JSX farqlari</h3>
+<pre><code class="language-jsx">// class → className (class JS da reserved word)
+&lt;div className="konteyner"&gt;...&lt;/div&gt;
+
+// for → htmlFor
+&lt;label htmlFor="email"&gt;Email:&lt;/label&gt;
+
+// style — ob'ekt sifatida (camelCase)
+&lt;p style={{ color: 'red', fontSize: '16px' }}&gt;Matn&lt;/p&gt;
+
+// Barcha teglar yopilishi kerak
+&lt;img src="rasm.jpg" alt="Rasm" /&gt;
+&lt;input type="text" /&gt;
+&lt;br /&gt;</code><span class="code-lang">jsx</span></pre>
+
+<h3>Shartli ko'rsatish</h3>
+<pre><code class="language-jsx">// && operatori
+const element = (
+  &lt;div&gt;
+    {isLoggedIn && &lt;p&gt;Xush kelibsiz!&lt;/p&gt;}
+  &lt;/div&gt;
+);
+
+// Uchlik operator
+const element = (
+  &lt;div&gt;
+    {isLoggedIn ? &lt;p&gt;Kirgan&lt;/p&gt; : &lt;p&gt;Kirmagan&lt;/p&gt;}
+  &lt;/div&gt;
+);</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">💡 JSX shunchaki sintaksis shakar. <code>&lt;h1&gt;Salom&lt;/h1&gt;</code> aslida <code>React.createElement('h1', null, 'Salom')</code> ga aylanadi.</div>
+        `
+      },
+      {
+        id: "react-komponentlar",
+        icon: "🧩",
+        title: "Komponentlar",
+        content: `
+<h3>Komponent nima?</h3>
+<p>Komponent — qayta ishlatiladigan UI bo'lagi. React ilovasi juda ko'p kichik komponentlardan tashkil topadi. Har bir komponent o'z mantiqiga, holatiga va ko'rinishiga ega.</p>
+
+<h3>Funksional komponent</h3>
+<pre><code class="language-jsx">// Oddiy funksional komponent
+function Salom() {
+  return &lt;h1&gt;Salom, Dunyo!&lt;/h1&gt;;
+}
+
+// Arrow function ko'rinishida
+const Salom = () =&gt; {
+  return &lt;h1&gt;Salom, Dunyo!&lt;/h1&gt;;
+};
+
+// Qisqa yozuv
+const Salom = () =&gt; &lt;h1&gt;Salom, Dunyo!&lt;/h1&gt;;
+
+// Ishlatish
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;Salom /&gt;
+      &lt;Salom /&gt;
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Komponent nomi katta harf bilan boshlanadi</h3>
+<pre><code class="language-jsx">// To'g'ri — katta harf bilan (React komponenti)
+&lt;Tugma /&gt;
+&lt;Karta /&gt;
+&lt;NavBar /&gt;
+
+// Noto'g'ri — kichik harf bilan (HTML teg deb qaraladi)
+&lt;tugma /&gt;  // HTML &lt;tugma&gt; tegi izlaydi</code><span class="code-lang">jsx</span></pre>
+
+<h3>Murakkab komponent misoli</h3>
+<pre><code class="language-jsx">function MahsulotKartasi() {
+  return (
+    &lt;div className="karta"&gt;
+      &lt;img src="telefon.jpg" alt="Telefon" /&gt;
+      &lt;h2&gt;Aqlli telefon&lt;/h2&gt;
+      &lt;p&gt;Narxi: 5,000,000 so'm&lt;/p&gt;
+      &lt;button&gt;Savatga qo'shish&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+function App() {
+  return (
+    &lt;div className="mahsulotlar"&gt;
+      &lt;MahsulotKartasi /&gt;
+      &lt;MahsulotKartasi /&gt;
+      &lt;MahsulotKartasi /&gt;
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Faylga ajratish</h3>
+<pre><code class="language-jsx">// Tugma.jsx
+function Tugma() {
+  return &lt;button className="btn"&gt;Bosing&lt;/button&gt;;
+}
+export default Tugma;
+
+// App.jsx
+import Tugma from './Tugma';
+
+function App() {
+  return &lt;Tugma /&gt;;
+}</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">🏗️ Yaxshi komponent: bitta vazifani bajaradi, kichik va tushunarli, qayta ishlatilishi mumkin. Agar komponent 100 qatordan oshsa — uni ajrating!</div>
+        `
+      },
+      {
+        id: "react-props",
+        icon: "📨",
+        title: "Props",
+        content: `
+<h3>Props nima?</h3>
+<p>Props (properties) — ota-komponentdan farzand-komponentga ma'lumot uzatish usuli. Props o'zgarmas (read-only) — farzand komponent uni o'zgartira olmaydi.</p>
+
+<h3>Props uzatish</h3>
+<pre><code class="language-jsx">// Ota komponent
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;Salom ism="Alisher" yosh={22} /&gt;
+      &lt;Salom ism="Malika" yosh={20} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Farzand komponent
+function Salom(props) {
+  return (
+    &lt;p&gt;
+      Salom, {props.ism}! Siz {props.yosh} yoshsiz.
+    &lt;/p&gt;
+  );
+}
+
+// Yoki destructuring bilan
+function Salom({ ism, yosh }) {
+  return &lt;p&gt;Salom, {ism}! Siz {yosh} yoshsiz.&lt;/p&gt;;
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Props turlari</h3>
+<pre><code class="language-jsx">function Misol({
+  matn,           // String
+  son,            // Number
+  mantiq,         // Boolean
+  massiv,         // Array
+  ob'ekt,         // Object
+  funksiya,       // Function
+  element         // JSX element
+}) {
+  return &lt;div&gt;{matn}&lt;/div&gt;;
+}
+
+// Ishlatish
+&lt;Misol
+  matn="Salom"
+  son={42}
+  mantiq={true}
+  massiv={[1, 2, 3]}
+  ob'ekt={{ ism: "Ali" }}
+  funksiya={() =&gt; alert("Salom!")}
+  element={&lt;span&gt;Ichki element&lt;/span&gt;}
+/&gt;</code><span class="code-lang">jsx</span></pre>
+
+<h3>Standart props qiymatlari</h3>
+<pre><code class="language-jsx">function Tugma({ matn = "Bosing", rang = "blue", onClick }) {
+  return (
+    &lt;button
+      style={{ background: rang }}
+      onClick={onClick}
+    &gt;
+      {matn}
+    &lt;/button&gt;
+  );
+}
+
+// Ishlatish
+&lt;Tugma /&gt;                    {/* "Bosing", blue */}
+&lt;Tugma matn="Saqlash" /&gt;    {/* "Saqlash", blue */}
+&lt;Tugma matn="O'chirish" rang="red" /&gt;</code><span class="code-lang">jsx</span></pre>
+
+<h3>children prop</h3>
+<pre><code class="language-jsx">function Karta({ sarlavha, children }) {
+  return (
+    &lt;div className="karta"&gt;
+      &lt;h2&gt;{sarlavha}&lt;/h2&gt;
+      &lt;div className="karta-tana"&gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Ishlatish
+&lt;Karta sarlavha="Mening kartam"&gt;
+  &lt;p&gt;Bu children prop orqali keladi&lt;/p&gt;
+  &lt;button&gt;Tugma&lt;/button&gt;
+&lt;/Karta&gt;</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">📌 Props — ma'lumot bir yo'nalishda (ota → farzand) oqadi. Farzanddan otaga ma'lumot yuborish uchun funksiyani prop sifatida uzating.</div>
+        `
+      },
+      {
+        id: "react-state",
+        icon: "💾",
+        title: "State (useState)",
+        content: `
+<h3>State nima?</h3>
+<p>State — komponentning o'zgaruvchan ma'lumoti. State o'zgarganda React komponentni qayta render qiladi. Props tashqaridan kelsa, state komponentning ichki ma'lumotidir.</p>
+
+<h3>useState Hook</h3>
+<pre><code class="language-jsx">import { useState } from 'react';
+
+function Hisoblagich() {
+  // [qiymat, o'zgartiruvchi] = useState(boshlang'ich_qiymat)
+  const [son, setSon] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Son: {son}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setSon(son + 1)}&gt;+1&lt;/button&gt;
+      &lt;button onClick={() =&gt; setSon(son - 1)}&gt;-1&lt;/button&gt;
+      &lt;button onClick={() =&gt; setSon(0)}&gt;Nol&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Turli xil state turlari</h3>
+<pre><code class="language-jsx">function Misol() {
+  const [matn, setMatn] = useState('');          // String
+  const [son, setSon] = useState(0);             // Number
+  const [korsatilsin, setKorsatilsin] = useState(false); // Boolean
+  const [massiv, setMassiv] = useState([]);      // Array
+  const [foydalanuvchi, setFoydalanuvchi] = useState({   // Object
+    ism: '',
+    email: ''
+  });
+
+  return &lt;div&gt;...&lt;/div&gt;;
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Massiv state</h3>
+<pre><code class="language-jsx">function Ro'yxat() {
+  const [elementlar, setElementlar] = useState(['Olma', 'Nok']);
+  const [yangi, setYangi] = useState('');
+
+  const qo'shish = () =&gt; {
+    if (yangi.trim()) {
+      setElementlar([...elementlar, yangi]); // Spread bilan yangi massiv
+      setYangi('');
+    }
+  };
+
+  const o'chirish = (index) =&gt; {
+    setElementlar(elementlar.filter((_, i) =&gt; i !== index));
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        value={yangi}
+        onChange={e =&gt; setYangi(e.target.value)}
+        placeholder="Yangi element"
+      /&gt;
+      &lt;button onClick={qo'shish}&gt;Qo'shish&lt;/button&gt;
+      &lt;ul&gt;
+        {elementlar.map((el, i) =&gt; (
+          &lt;li key={i}&gt;
+            {el} &lt;button onClick={() =&gt; o'chirish(i)}&gt;✕&lt;/button&gt;
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Ob'ekt state</h3>
+<pre><code class="language-jsx">function Forma() {
+  const [forma, setForma] = useState({ ism: '', email: '' });
+
+  const o'zgartir = (e) =&gt; {
+    setForma({
+      ...forma,                    // Eski qiymatlarni saqlash
+      [e.target.name]: e.target.value // Faqat o'zgarganini yangilash
+    });
+  };
+
+  return (
+    &lt;form&gt;
+      &lt;input name="ism" value={forma.ism} onChange={o'zgartir} /&gt;
+      &lt;input name="email" value={forma.email} onChange={o'zgartir} /&gt;
+    &lt;/form&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">⚠️ State ni to'g'ridan-to'g'ri o'zgartirmang! <code>state.son = 5</code> emas, <code>setState(5)</code> ishlating. Aks holda React o'zgarishni ko'rmaydi va qayta render qilmaydi.</div>
+        `
+      },
+      {
+        id: "react-useeffect",
+        icon: "🔄",
+        title: "useEffect",
+        content: `
+<h3>useEffect nima?</h3>
+<p>useEffect — komponent render bo'lgandan keyin "yon ta'sirlar" (side effects) bajarish uchun hook. API dan ma'lumot olish, timer o'rnatish, DOM bilan ishlash — bularning barchasi useEffect ichida qilinadi.</p>
+
+<h3>Asosiy ishlatish</h3>
+<pre><code class="language-jsx">import { useState, useEffect } from 'react';
+
+function Misol() {
+  const [son, setSon] = useState(0);
+
+  // Har render da ishlaydi
+  useEffect(() =&gt; {
+    document.title = \`Son: \${son}\`;
+  });
+
+  // Faqat bir marta (komponent paydo bo'lganda)
+  useEffect(() =&gt; {
+    console.log('Komponent paydo bo'ldi!');
+  }, []); // Bo'sh massiv = bir martagina
+
+  // son o'zgarganda ishlaydi
+  useEffect(() =&gt; {
+    console.log('Son o'zgardi:', son);
+  }, [son]); // Dependency array
+
+  return &lt;button onClick={() =&gt; setSon(son + 1)}&gt;{son}&lt;/button&gt;;
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>API dan ma'lumot olish</h3>
+<pre><code class="language-jsx">function Foydalanuvchilar() {
+  const [foydalanuvchilar, setFoydalanuvchilar] = useState([]);
+  const [yuklanmoqda, setYuklanmoqda] = useState(true);
+
+  useEffect(() =&gt; {
+    async function malumotOlish() {
+      try {
+        const javob = await fetch('https://jsonplaceholder.typicode.com/users');
+        const ma'lumot = await javob.json();
+        setFoydalanuvchilar(ma'lumot);
+      } catch (xato) {
+        console.error(xato);
+      } finally {
+        setYuklanmoqda(false);
+      }
+    }
+
+    malumotOlish();
+  }, []); // Faqat bir marta
+
+  if (yuklanmoqda) return &lt;p&gt;Yuklanmoqda...&lt;/p&gt;;
+
+  return (
+    &lt;ul&gt;
+      {foydalanuvchilar.map(f =&gt; (
+        &lt;li key={f.id}&gt;{f.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Tozalash (Cleanup)</h3>
+<pre><code class="language-jsx">useEffect(() =&gt; {
+  // Timer o'rnatish
+  const intervalId = setInterval(() =&gt; {
+    console.log('Tiklanmoqda...');
+  }, 1000);
+
+  // Komponent o'chirilganda tozalash
+  return () =&gt; {
+    clearInterval(intervalId); // Timer o'chiriladi
+  };
+}, []);
+
+// Event listener uchun
+useEffect(() =&gt; {
+  const handler = () =&gt; console.log('Oyna o'lchami o'zgardi');
+  window.addEventListener('resize', handler);
+
+  return () =&gt; window.removeEventListener('resize', handler);
+}, []);</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">🔑 Dependency array (ikkinchi argument) juda muhim: bo'sh [] = bir marta, [qiymat] = qiymat o'zgarganda, yo'q = har doim. Noto'g'ri ishlatilsa cheksiz loop hosil bo'ladi!</div>
+        `
+      },
+      {
+        id: "react-hodisalar",
+        icon: "🖱️",
+        title: "Hodisalar (Events)",
+        content: `
+<h3>React da hodisalar</h3>
+<p>React hodisalari HTML hodisalariga o'xshash, lekin camelCase formatida yoziladi va funksiya sifatida uzatiladi (string emas).</p>
+
+<h3>Asosiy hodisalar</h3>
+<pre><code class="language-jsx">function HodisaMisol() {
+  // onClick
+  const bosing = () =&gt; alert('Bosildi!');
+
+  // onSubmit
+  const yuborish = (e) =&gt; {
+    e.preventDefault(); // Standart yuklanishni to'xtatish
+    console.log('Forma yuborildi');
+  };
+
+  // onChange
+  const o'zgartirish = (e) =&gt; {
+    console.log('Qiymat:', e.target.value);
+  };
+
+  return (
+    &lt;form onSubmit={yuborish}&gt;
+      &lt;input onChange={o'zgartirish} /&gt;
+      &lt;button onClick={bosing}&gt;Bosing&lt;/button&gt;
+      &lt;button type="submit"&gt;Yuborish&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Hodisa va state birga</h3>
+<pre><code class="language-jsx">function Qidiruv() {
+  const [qidiruv, setQidiruv] = useState('');
+  const [natijalar, setNatijalar] = useState([]);
+
+  const qidirish = (e) =&gt; {
+    const qiymat = e.target.value;
+    setQidiruv(qiymat);
+
+    // Natijalarni filtrlash
+    const filtrlangan = mahsulotlar.filter(m =&gt;
+      m.nomi.toLowerCase().includes(qiymat.toLowerCase())
+    );
+    setNatijalar(filtrlangan);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        type="search"
+        value={qidiruv}
+        onChange={qidirish}
+        placeholder="Qidirish..."
+      /&gt;
+      &lt;ul&gt;
+        {natijalar.map(m =&gt; &lt;li key={m.id}&gt;{m.nomi}&lt;/li&gt;)}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Klaviatura hodisalari</h3>
+<pre><code class="language-jsx">function InputMisol() {
+  const [matn, setMatn] = useState('');
+
+  const klaviatura = (e) =&gt; {
+    if (e.key === 'Enter') {
+      console.log('Enter bosildi:', matn);
+    }
+    if (e.key === 'Escape') {
+      setMatn('');
+    }
+  };
+
+  return (
+    &lt;input
+      value={matn}
+      onChange={e =&gt; setMatn(e.target.value)}
+      onKeyDown={klaviatura}
+    /&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Asosiy hodisalar ro'yxati</h3>
+<div class="tag-list">
+  <span class="tag">onClick</span>
+  <span class="tag">onChange</span>
+  <span class="tag">onSubmit</span>
+  <span class="tag">onKeyDown</span>
+  <span class="tag">onKeyUp</span>
+  <span class="tag">onMouseEnter</span>
+  <span class="tag">onMouseLeave</span>
+  <span class="tag">onFocus</span>
+  <span class="tag">onBlur</span>
+  <span class="tag">onScroll</span>
+</div>
+
+<div class="info-box">💡 Hodisa handlerlari onClick={bosing} shaklida yozing — onClick={bosing()} emas! Qavslar qo'yilsa, render paytida darhol chaqiriladi.</div>
+        `
+      },
+      {
+        id: "react-shartli-render",
+        icon: "🔀",
+        title: "Shartli render",
+        content: `
+<h3>Shartli render nima?</h3>
+<p>Shartli render — ma'lum shartga qarab turli JSX ko'rsatish. React da bu JavaScript ning oddiy shartli operatorlari orqali amalga oshiriladi.</p>
+
+<h3>if-else bilan</h3>
+<pre><code class="language-jsx">function Xabar({ kirgan }) {
+  if (kirgan) {
+    return &lt;h1&gt;Xush kelibsiz!&lt;/h1&gt;;
+  }
+  return &lt;h1&gt;Iltimos, kiring.&lt;/h1&gt;;
+}
+
+// Ishlatish
+&lt;Xabar kirgan={true} /&gt;
+&lt;Xabar kirgan={false} /&gt;</code><span class="code-lang">jsx</span></pre>
+
+<h3>&& operatori</h3>
+<pre><code class="language-jsx">function Panel({ xabarlar }) {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Bosh sahifa&lt;/h2&gt;
+
+      {/* Faqat xabarlar bo'lganda ko'rsatish */}
+      {xabarlar.length &gt; 0 && (
+        &lt;p&gt;Sizda {xabarlar.length} ta yangi xabar bor.&lt;/p&gt;
+      )}
+
+      {/* Yuklanmoqda holati */}
+      {yuklanmoqda && &lt;div className="spinner"&gt;Yuklanmoqda...&lt;/div&gt;}
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Uchlik operator (ternary)</h3>
+<pre><code class="language-jsx">function Tugma({ yuklanmoqda, onClick }) {
+  return (
+    &lt;button onClick={onClick} disabled={yuklanmoqda}&gt;
+      {yuklanmoqda ? 'Yuklanmoqda...' : 'Yuborish'}
+    &lt;/button&gt;
+  );
+}
+
+// Murakkab uchlik
+function Holat({ holat }) {
+  return (
+    &lt;span className={holat === 'faol' ? 'yashil' : 'kulrang'}&gt;
+      {holat === 'faol' ? '✅ Faol' : '⬤ Nofaol'}
+    &lt;/span&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>switch bilan</h3>
+<pre><code class="language-jsx">function Ogohlantirish({ tur }) {
+  switch (tur) {
+    case 'muvaffaqiyat':
+      return &lt;div className="yashil"&gt;✅ Muvaffaqiyat!&lt;/div&gt;;
+    case 'xato':
+      return &lt;div className="qizil"&gt;❌ Xato yuz berdi!&lt;/div&gt;;
+    case 'ogohlantirish':
+      return &lt;div className="sariq"&gt;⚠️ Diqqat!&lt;/div&gt;;
+    default:
+      return null; // Hech narsa ko'rsatmaslik
+  }
+}</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">⚠️ <code>0 && &lt;Komponent /&gt;</code> — noto'g'ri! 0 ko'rsatiladi. <code>!!(son) && &lt;Komponent /&gt;</code> yoki <code>son &gt; 0 && &lt;Komponent /&gt;</code> ishlating.</div>
+        `
+      },
+      {
+        id: "react-royxatlar",
+        icon: "📋",
+        title: "Ro'yxatlar va Keys",
+        content: `
+<h3>Ro'yxatlarni render qilish</h3>
+<p>React da massivlarni ro'yxat sifatida ko'rsatish uchun <code>.map()</code> metodi ishlatiladi. Har bir element noyob <code>key</code> prop ga ega bo'lishi kerak.</p>
+
+<h3>Asosiy misol</h3>
+<pre><code class="language-jsx">function MevalarRo'yxati() {
+  const mevalar = ['Olma', 'Nok', 'Shaftoli', 'Gilos'];
+
+  return (
+    &lt;ul&gt;
+      {mevalar.map((meva, index) =&gt; (
+        &lt;li key={index}&gt;{meva}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Ob'ektlar massivi</h3>
+<pre><code class="language-jsx">function FoydalanuvchilarRo'yxati() {
+  const foydalanuvchilar = [
+    { id: 1, ism: 'Alisher', kasb: 'Dasturchi' },
+    { id: 2, ism: 'Malika', kasb: 'Dizayner' },
+    { id: 3, ism: 'Bobur', kasb: 'Muhandis' },
+  ];
+
+  return (
+    &lt;div&gt;
+      {foydalanuvchilar.map(f =&gt; (
+        &lt;div key={f.id} className="karta"&gt;
+          &lt;h3&gt;{f.ism}&lt;/h3&gt;
+          &lt;p&gt;{f.kasb}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Key prop haqida</h3>
+<pre><code class="language-jsx">// Noto'g'ri — key yo'q
+{elementlar.map(el =&gt; &lt;li&gt;{el.nomi}&lt;/li&gt;)}
+
+// Yomon — index ishlatish (tartib o'zgarsa muammo)
+{elementlar.map((el, i) =&gt; &lt;li key={i}&gt;{el.nomi}&lt;/li&gt;)}
+
+// To'g'ri — noyob ID ishlatish
+{elementlar.map(el =&gt; &lt;li key={el.id}&gt;{el.nomi}&lt;/li&gt;)}</code><span class="code-lang">jsx</span></pre>
+
+<h3>Filtrlash va saralash</h3>
+<pre><code class="language-jsx">function MahsulotlarRo'yxati({ mahsulotlar, qidiruv }) {
+  const filtrlangan = mahsulotlar
+    .filter(m =&gt; m.nomi.toLowerCase().includes(qidiruv.toLowerCase()))
+    .sort((a, b) =&gt; a.narx - b.narx);
+
+  if (filtrlangan.length === 0) {
+    return &lt;p&gt;Hech narsa topilmadi.&lt;/p&gt;;
+  }
+
+  return (
+    &lt;ul&gt;
+      {filtrlangan.map(m =&gt; (
+        &lt;li key={m.id}&gt;
+          {m.nomi} — {m.narx.toLocaleString()} so'm
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">🔑 <code>key</code> prop React ga har bir element qaysi ekanligini aniqlashga yordam beradi. Noyob, o'zgarmas qiymat bo'lishi kerak — ideal holda ma'lumotlar bazasidagi ID.</div>
+        `
+      },
+      {
+        id: "react-hooks",
+        icon: "🪝",
+        title: "Asosiy Hooks",
+        content: `
+<h3>Hook nima?</h3>
+<p>Hooks — funksional komponentlarga state va boshqa React imkoniyatlarini qo'shuvchi maxsus funksiyalar. Ular har doim "use" bilan boshlanadi.</p>
+
+<h3>useState — holat boshqarish</h3>
+<pre><code class="language-jsx">import { useState } from 'react';
+
+function Hisoblagich() {
+  const [qiymat, setQiymat] = useState(0);
+  return &lt;button onClick={() =&gt; setQiymat(q =&gt; q + 1)}&gt;{qiymat}&lt;/button&gt;;
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>useEffect — yon ta'sirlar</h3>
+<pre><code class="language-jsx">import { useEffect } from 'react';
+
+useEffect(() =&gt; { /* ishlaydi */ }, []);      // Bir marta
+useEffect(() =&gt; { /* ishlaydi */ }, [dep]);   // dep o'zgarganda
+useEffect(() =&gt; { /* ishlaydi */ });          // Har render da</code><span class="code-lang">jsx</span></pre>
+
+<h3>useRef — DOM ga murojaat</h3>
+<pre><code class="language-jsx">import { useRef } from 'react';
+
+function InputFokus() {
+  const inputRef = useRef(null);
+
+  const fokuslashtirish = () =&gt; {
+    inputRef.current.focus(); // DOM elementga to'g'ridan-to'g'ri murojaat
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input ref={inputRef} placeholder="Matn kiriting" /&gt;
+      &lt;button onClick={fokuslashtirish}&gt;Fokus&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>useContext — global state</h3>
+<pre><code class="language-jsx">import { createContext, useContext, useState } from 'react';
+
+// Context yaratish
+const TemaContext = createContext('kunduz');
+
+// Provider — qiymatni o'rash
+function App() {
+  const [tema, setTema] = useState('kunduz');
+  return (
+    &lt;TemaContext.Provider value={{ tema, setTema }}&gt;
+      &lt;SarlavhaPaneli /&gt;
+    &lt;/TemaContext.Provider&gt;
+  );
+}
+
+// Istagan joyda ishlatish
+function SarlavhaPaneli() {
+  const { tema, setTema } = useContext(TemaContext);
+  return (
+    &lt;button onClick={() =&gt; setTema(t =&gt; t === 'kunduz' ? 'tun' : 'kunduz')}&gt;
+      Joriy tema: {tema}
+    &lt;/button&gt;
+  );
+}</code><span class="code-lang">jsx</span></pre>
+
+<h3>useMemo va useCallback</h3>
+<pre><code class="language-jsx">import { useMemo, useCallback } from 'react';
+
+// useMemo — qimmat hisob-kitobni keshlash
+const hisob = useMemo(() =&gt; {
+  return kattaMassiv.filter(el =&gt; el &gt; 1000).length;
+}, [kattaMassiv]); // faqat kattaMassiv o'zgarganda qayta hisoblanadi
+
+// useCallback — funksiyani keshlash
+const bosing = useCallback(() =&gt; {
+  doSomething(id);
+}, [id]);</code><span class="code-lang">jsx</span></pre>
+
+<div class="info-box">🪝 Hooks qoidalari: faqat funksional komponentlar yoki boshqa hooklar ichida ishlating. Tsikl, shartli operatorlar yoki oddiy funksiyalar ichida CHAQIRMANG.</div>
+        `
+      }
+    ]
+  },
+
+  tailwind: {
+    title: "Tailwind CSS",
+    fullName: "Tailwind CSS — Utility-first CSS framework",
+    icon: "🌊",
+    desc: "Utility klasslar bilan tez va moslashuvchan dizayn yaratish uchun CSS framework",
+    color: "tw",
+    topicsCount: 10,
+    topics: [
+      {
+        id: "tw-nima",
+        icon: "🌊",
+        title: "Tailwind CSS nima?",
+        content: `
+<h3>Tailwind CSS haqida</h3>
+<p>Tailwind CSS — 2017-yilda Adam Wathan tomonidan yaratilgan "utility-first" CSS framework. Bootstrap kabi tayyor komponentlar bermaydi — buning o'rniga kichik, maqsadli CSS klasslari beradi va siz ularni birlashtirish orqali dizayn yaratasiz.</p>
+
+<h3>Tailwind vs Bootstrap</h3>
+<pre><code class="language-html">&lt;!-- Bootstrap: tayyor komponent --&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Bosing&lt;/button&gt;
+
+&lt;!-- Tailwind: utility klasslar bilan qurilgan --&gt;
+&lt;button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"&gt;
+  Bosing
+&lt;/button&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Tailwind afzalliklari</h3>
+<ul>
+  <li><strong>Tez ishlab chiqish</strong> — CSS fayl yozmasdan dizayn qilish</li>
+  <li><strong>Kichik hajm</strong> — ishlatilmagan klasslar build paytida o'chiriladi (PurgeCSS)</li>
+  <li><strong>Moslashuvchan</strong> — har qanday dizaynni yaratish mumkin</li>
+  <li><strong>Responsive</strong> — qurilish ichida responsive dizayn</li>
+  <li><strong>Dark mode</strong> — o'rnatilgan qorong'u rejim</li>
+</ul>
+
+<h3>O'rnatish</h3>
+<pre><code class="language-bash"># npm bilan
+npm install -D tailwindcss
+npx tailwindcss init
+
+# CDN bilan (faqat prototip uchun)
+&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</code><span class="code-lang">bash</span></pre>
+
+<h3>tailwind.config.js</h3>
+<pre><code class="language-javascript">/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}</code><span class="code-lang">javascript</span></pre>
+
+<div class="info-box">🌊 Tailwind dunyoning eng mashhur CSS frameworklaridan biri. Ko'plab yirik kompaniyalar (GitHub, Shopify, Vercel) Tailwind ishlatadi.</div>
+        `
+      },
+      {
+        id: "tw-ranglar",
+        icon: "🎨",
+        title: "Ranglar va Typography",
+        content: `
+<h3>Rang tizimi</h3>
+<p>Tailwind 100 dan 900 gacha shkala bo'yicha 22 ta asosiy rang beradi. Har bir rang 11 ta to'yinganlik darajasiga ega.</p>
+
+<pre><code class="language-html">&lt;!-- Matn rangi --&gt;
+&lt;p class="text-red-500"&gt;Qizil matn&lt;/p&gt;
+&lt;p class="text-blue-700"&gt;To'q ko'k matn&lt;/p&gt;
+&lt;p class="text-gray-400"&gt;Kulrang matn&lt;/p&gt;
+&lt;p class="text-white"&gt;Oq matn&lt;/p&gt;
+&lt;p class="text-black"&gt;Qora matn&lt;/p&gt;
+
+&lt;!-- Fon rangi --&gt;
+&lt;div class="bg-green-100"&gt;Och yashil fon&lt;/div&gt;
+&lt;div class="bg-purple-600"&gt;Binafsha fon&lt;/div&gt;
+&lt;div class="bg-yellow-400"&gt;Sariq fon&lt;/div&gt;
+
+&lt;!-- Chegara rangi --&gt;
+&lt;div class="border border-red-500"&gt;Qizil chegara&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Asosiy ranglar</h3>
+<div class="tag-list">
+  <span class="tag">slate</span>
+  <span class="tag">gray</span>
+  <span class="tag">red</span>
+  <span class="tag">orange</span>
+  <span class="tag">yellow</span>
+  <span class="tag">green</span>
+  <span class="tag">blue</span>
+  <span class="tag">indigo</span>
+  <span class="tag">purple</span>
+  <span class="tag">pink</span>
+  <span class="tag">cyan</span>
+  <span class="tag">teal</span>
+</div>
+
+<h3>Typography (Matn)</h3>
+<pre><code class="language-html">&lt;!-- Shrift o'lchami --&gt;
+&lt;p class="text-xs"&gt;Juda kichik (12px)&lt;/p&gt;
+&lt;p class="text-sm"&gt;Kichik (14px)&lt;/p&gt;
+&lt;p class="text-base"&gt;Asosiy (16px)&lt;/p&gt;
+&lt;p class="text-lg"&gt;Katta (18px)&lt;/p&gt;
+&lt;p class="text-xl"&gt;Juda katta (20px)&lt;/p&gt;
+&lt;p class="text-2xl"&gt;2x katta (24px)&lt;/p&gt;
+&lt;p class="text-4xl"&gt;4x katta (36px)&lt;/p&gt;
+
+&lt;!-- Qalinlik --&gt;
+&lt;p class="font-thin"&gt;Ingichka (100)&lt;/p&gt;
+&lt;p class="font-normal"&gt;Oddiy (400)&lt;/p&gt;
+&lt;p class="font-semibold"&gt;Yarim qalin (600)&lt;/p&gt;
+&lt;p class="font-bold"&gt;Qalin (700)&lt;/p&gt;
+&lt;p class="font-black"&gt;Juda qalin (900)&lt;/p&gt;
+
+&lt;!-- Hizalanish --&gt;
+&lt;p class="text-left"&gt;Chapga&lt;/p&gt;
+&lt;p class="text-center"&gt;Markazga&lt;/p&gt;
+&lt;p class="text-right"&gt;O'ngga&lt;/p&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">🎨 Tailwind rang sistemasi: rang-shkala formatida. Masalan: <code>blue-500</code> — o'rtacha ko'k. 100 = och, 900 = to'q. 500 standart qiymat hisoblanadi.</div>
+        `
+      },
+      {
+        id: "tw-spacing",
+        icon: "📐",
+        title: "Spacing (Bo'shliqlar)",
+        content: `
+<h3>Tailwind spacing tizimi</h3>
+<p>Tailwind 4px asosidagi spacing tizimiga ega. 1 birlik = 4px. Margin, padding, width, height uchun bir xil shkaladan foydalaniladi.</p>
+
+<h3>Padding</h3>
+<pre><code class="language-html">&lt;!-- Barcha tomondan --&gt;
+&lt;div class="p-4"&gt;16px barcha tomondan&lt;/div&gt;
+&lt;div class="p-8"&gt;32px barcha tomondan&lt;/div&gt;
+
+&lt;!-- Gorizontal va vertikal --&gt;
+&lt;div class="px-6 py-3"&gt;24px gorizontal, 12px vertikal&lt;/div&gt;
+
+&lt;!-- Alohida tomonlar --&gt;
+&lt;div class="pt-4"&gt;16px yuqoridan (top)&lt;/div&gt;
+&lt;div class="pr-4"&gt;16px o'ngdan (right)&lt;/div&gt;
+&lt;div class="pb-4"&gt;16px pastdan (bottom)&lt;/div&gt;
+&lt;div class="pl-4"&gt;16px chapdan (left)&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Margin</h3>
+<pre><code class="language-html">&lt;!-- Barcha tomondan --&gt;
+&lt;div class="m-4"&gt;16px margin barcha tomondan&lt;/div&gt;
+
+&lt;!-- Gorizontal va vertikal --&gt;
+&lt;div class="mx-auto"&gt;Gorizontal markazlashtirish&lt;/div&gt;
+&lt;div class="my-8"&gt;32px yuqori va pastdan&lt;/div&gt;
+
+&lt;!-- Alohida tomonlar --&gt;
+&lt;div class="mt-4 mb-2 ml-6 mr-3"&gt;Har xil margin&lt;/div&gt;
+
+&lt;!-- Salbiy margin --&gt;
+&lt;div class="-mt-4"&gt;-16px yuqoridan&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>O'lchamlar (Width & Height)</h3>
+<pre><code class="language-html">&lt;!-- Fikslangan o'lcham --&gt;
+&lt;div class="w-32 h-16"&gt;128px keng, 64px baland&lt;/div&gt;
+&lt;div class="w-64 h-64"&gt;256x256 px&lt;/div&gt;
+
+&lt;!-- Foizli --&gt;
+&lt;div class="w-1/2"&gt;50% keng&lt;/div&gt;
+&lt;div class="w-full"&gt;100% keng&lt;/div&gt;
+&lt;div class="h-screen"&gt;100vh baland&lt;/div&gt;
+&lt;div class="h-full"&gt;100% baland&lt;/div&gt;
+
+&lt;!-- Min/Max --&gt;
+&lt;div class="max-w-lg"&gt;Maksimal 512px&lt;/div&gt;
+&lt;div class="min-h-screen"&gt;Kamida ekran balandligi&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Spacing shkala</h3>
+<pre><code class="language-html">p-0  → 0px
+p-1  → 4px
+p-2  → 8px
+p-3  → 12px
+p-4  → 16px
+p-5  → 20px
+p-6  → 24px
+p-8  → 32px
+p-10 → 40px
+p-12 → 48px
+p-16 → 64px
+p-20 → 80px
+p-24 → 96px</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">📐 Tailwind spacing — 4px asosida qurilgan. Bu standart dizayn sistemalari bilan mos keladi va hamma joyda bir xil ko'rinish ta'minlaydi.</div>
+        `
+      },
+      {
+        id: "tw-flexbox",
+        icon: "↔️",
+        title: "Flexbox",
+        content: `
+<h3>Tailwind bilan Flexbox</h3>
+<p>Tailwind Flexbox xususiyatlarini utility klasslar orqali beradi. Birma-bir CSS yozishdan ko'ra ancha qulay.</p>
+
+<h3>Asosiy flex klasslar</h3>
+<pre><code class="language-html">&lt;!-- Flex konteyner --&gt;
+&lt;div class="flex"&gt;Gorizontal flex&lt;/div&gt;
+&lt;div class="flex flex-col"&gt;Vertikal flex&lt;/div&gt;
+&lt;div class="inline-flex"&gt;Qatorli flex&lt;/div&gt;
+
+&lt;!-- Yo'nalish --&gt;
+&lt;div class="flex flex-row"&gt;→ Gorizontal (standart)&lt;/div&gt;
+&lt;div class="flex flex-col"&gt;↓ Vertikal&lt;/div&gt;
+&lt;div class="flex flex-row-reverse"&gt;← Teskari&lt;/div&gt;
+
+&lt;!-- O'rash --&gt;
+&lt;div class="flex flex-wrap"&gt;Ko'p qatorli&lt;/div&gt;
+&lt;div class="flex flex-nowrap"&gt;Bir qatorli (standart)&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>justify-content</h3>
+<pre><code class="language-html">&lt;div class="flex justify-start"&gt;Chapga&lt;/div&gt;
+&lt;div class="flex justify-center"&gt;Markazga&lt;/div&gt;
+&lt;div class="flex justify-end"&gt;O'ngga&lt;/div&gt;
+&lt;div class="flex justify-between"&gt;Oralig'i teng&lt;/div&gt;
+&lt;div class="flex justify-around"&gt;Atrofi teng&lt;/div&gt;
+&lt;div class="flex justify-evenly"&gt;Hammasi teng&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>align-items</h3>
+<pre><code class="language-html">&lt;div class="flex items-start"&gt;Yuqoriga&lt;/div&gt;
+&lt;div class="flex items-center"&gt;Markazga&lt;/div&gt;
+&lt;div class="flex items-end"&gt;Pastga&lt;/div&gt;
+&lt;div class="flex items-stretch"&gt;Cho'zilib (standart)&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Amaliy misol — Navigatsiya</h3>
+<pre><code class="language-html">&lt;nav class="flex items-center justify-between px-6 py-4 bg-white shadow"&gt;
+  &lt;div class="text-xl font-bold text-blue-600"&gt;
+    Logo
+  &lt;/div&gt;
+
+  &lt;ul class="flex gap-6 list-none"&gt;
+    &lt;li&gt;&lt;a href="#" class="text-gray-600 hover:text-blue-600"&gt;Bosh sahifa&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="text-gray-600 hover:text-blue-600"&gt;Haqida&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="text-gray-600 hover:text-blue-600"&gt;Aloqa&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"&gt;
+    Kirish
+  &lt;/button&gt;
+&lt;/nav&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>gap (oraliq)</h3>
+<pre><code class="language-html">&lt;div class="flex gap-4"&gt;4*4=16px oraliq&lt;/div&gt;
+&lt;div class="flex gap-x-6 gap-y-2"&gt;Gorizontal 24px, vertikal 8px&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">💡 <code>flex items-center justify-center</code> — elementni markazlashtirish uchun klassik kombinatsiya. Bu Tailwind da eng ko'p ishlatiladigan pattern.</div>
+        `
+      },
+      {
+        id: "tw-grid",
+        icon: "⊞",
+        title: "Grid",
+        content: `
+<h3>Tailwind bilan Grid</h3>
+<p>Tailwind Grid xususiyatlari yordamida ikki o'lchamli tartiblar yaratish juda oson. CSS Grid ning barcha kuchliligi utility klasslar orqali.</p>
+
+<h3>Grid asoslari</h3>
+<pre><code class="language-html">&lt;!-- Grid konteyner --&gt;
+&lt;div class="grid grid-cols-3"&gt;3 ustun&lt;/div&gt;
+&lt;div class="grid grid-cols-4"&gt;4 ustun&lt;/div&gt;
+&lt;div class="grid grid-cols-12"&gt;12 ustun&lt;/div&gt;
+
+&lt;!-- Oraliq --&gt;
+&lt;div class="grid grid-cols-3 gap-4"&gt;16px oraliq&lt;/div&gt;
+&lt;div class="grid grid-cols-3 gap-x-6 gap-y-4"&gt;Turli oraliq&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>span — ustun egallash</h3>
+<pre><code class="language-html">&lt;div class="grid grid-cols-6 gap-4"&gt;
+  &lt;div class="col-span-6 bg-blue-200"&gt;To'liq kenglik&lt;/div&gt;
+  &lt;div class="col-span-4 bg-green-200"&gt;4 ustun&lt;/div&gt;
+  &lt;div class="col-span-2 bg-red-200"&gt;2 ustun&lt;/div&gt;
+  &lt;div class="col-span-3 bg-yellow-200"&gt;Yarmi&lt;/div&gt;
+  &lt;div class="col-span-3 bg-purple-200"&gt;Yarmi&lt;/div&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Amaliy misol — Karta panjarasi</h3>
+<pre><code class="language-html">&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6"&gt;
+  &lt;div class="bg-white rounded-xl shadow-md p-6"&gt;
+    &lt;h3 class="text-lg font-semibold text-gray-800"&gt;Karta 1&lt;/h3&gt;
+    &lt;p class="text-gray-500 mt-2"&gt;Karta tavsifi...&lt;/p&gt;
+    &lt;button class="mt-4 text-blue-600 hover:underline"&gt;Ko'proq &rarr;&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="bg-white rounded-xl shadow-md p-6"&gt;
+    &lt;h3 class="text-lg font-semibold text-gray-800"&gt;Karta 2&lt;/h3&gt;
+    &lt;p class="text-gray-500 mt-2"&gt;Karta tavsifi...&lt;/p&gt;
+    &lt;button class="mt-4 text-blue-600 hover:underline"&gt;Ko'proq &rarr;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>place-items — markazlashtirish</h3>
+<pre><code class="language-html">&lt;!-- Markazlashtirish --&gt;
+&lt;div class="grid place-items-center h-screen"&gt;
+  &lt;div&gt;Bu element markazda!&lt;/div&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">🏆 Grid bilan Flexbox birga: qoida shunday — sahifa tuzilishi uchun Grid, kichik komponentlar ichidagi joylashuv uchun Flexbox.</div>
+        `
+      },
+      {
+        id: "tw-responsive",
+        icon: "📱",
+        title: "Responsive dizayn",
+        content: `
+<h3>Tailwind Responsive tizimi</h3>
+<p>Tailwind "Mobile First" yondashuvini ishlatadi. Asosiy klasslar barcha o'lchamlar uchun ishlaydi, prefikslar orqali kattaroq ekranlar uchun qo'shiladi.</p>
+
+<h3>Breakpoint prefikslari</h3>
+<pre><code class="language-html">&lt;!-- Breakpoint shkala --&gt;
+sm:   640px dan katta
+md:   768px dan katta
+lg:   1024px dan katta
+xl:   1280px dan katta
+2xl:  1536px dan katta</code><span class="code-lang">html</span></pre>
+
+<h3>Asosiy misol</h3>
+<pre><code class="language-html">&lt;!-- Mobil: 1 ustun, Planshet: 2 ustun, Kompyuter: 3 ustun --&gt;
+&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"&gt;
+  &lt;div&gt;Karta 1&lt;/div&gt;
+  &lt;div&gt;Karta 2&lt;/div&gt;
+  &lt;div&gt;Karta 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Matn o'lchami responsive --&gt;
+&lt;h1 class="text-2xl md:text-4xl lg:text-6xl font-bold"&gt;
+  Responsive sarlavha
+&lt;/h1&gt;
+
+&lt;!-- Ko'rinish/yashirish --&gt;
+&lt;div class="hidden md:block"&gt;
+  Faqat md va undan kattada ko'rinadi
+&lt;/div&gt;
+
+&lt;div class="block md:hidden"&gt;
+  Faqat mobildan ko'rinadi
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Responsive navigatsiya</h3>
+<pre><code class="language-html">&lt;nav class="flex flex-col md:flex-row items-start md:items-center
+            justify-between p-4 bg-white"&gt;
+  &lt;span class="text-xl font-bold"&gt;Logo&lt;/span&gt;
+
+  &lt;!-- Mobilda vertikal, kattada gorizontal --&gt;
+  &lt;ul class="flex flex-col md:flex-row gap-2 md:gap-6 mt-4 md:mt-0"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Bosh sahifa&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Xizmatlar&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Aloqa&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Responsive padding va margin</h3>
+<pre><code class="language-html">&lt;div class="p-4 md:p-8 lg:p-16"&gt;
+  &lt;!-- Mobil: 16px, Planshet: 32px, Kompyuter: 64px --&gt;
+  Kontent
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">📱 Mobile First: avval kichik ekran uchun yozing (prefikssiz), keyin katta ekranlar uchun prefikslar bilan kengaytiring. Bu eng to'g'ri yondashuv!</div>
+        `
+      },
+      {
+        id: "tw-hover-focus",
+        icon: "🖱️",
+        title: "Hover, Focus va holat klasslar",
+        content: `
+<h3>Interaktiv holat klasslar</h3>
+<p>Tailwind hover, focus, active va boshqa holatlarga prefikslar orqali CSS yozmay uslub berish imkonini beradi.</p>
+
+<h3>hover:</h3>
+<pre><code class="language-html">&lt;!-- Hover holati --&gt;
+&lt;button class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"&gt;
+  Tugma
+&lt;/button&gt;
+
+&lt;a class="text-blue-500 hover:text-blue-800 hover:underline"&gt;
+  Havola
+&lt;/a&gt;
+
+&lt;div class="bg-white hover:bg-gray-50 hover:shadow-lg transition"&gt;
+  Karta
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>focus:</h3>
+<pre><code class="language-html">&lt;input
+  class="border border-gray-300 rounded px-3 py-2
+         focus:outline-none focus:border-blue-500
+         focus:ring-2 focus:ring-blue-200"
+  placeholder="Email kiriting"
+/&gt;
+
+&lt;button
+  class="bg-green-500 text-white px-4 py-2 rounded
+         focus:outline-none focus:ring-4 focus:ring-green-300"
+&gt;
+  Yuborish
+&lt;/button&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>active: va disabled:</h3>
+<pre><code class="language-html">&lt;button class="bg-blue-500 active:bg-blue-900 text-white px-4 py-2 rounded"&gt;
+  Bosing (active holat)
+&lt;/button&gt;
+
+&lt;button
+  class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed"
+  disabled
+&gt;
+  O'chirilgan
+&lt;/button&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>transition va animatsiya</h3>
+<pre><code class="language-html">&lt;!-- Silliq o'tish --&gt;
+&lt;button class="bg-blue-500 hover:bg-blue-700 transition duration-300 ease-in-out
+               text-white px-4 py-2 rounded transform hover:scale-105"&gt;
+  Animatsiya
+&lt;/button&gt;
+
+&lt;!-- Barcha tranzisiyalar --&gt;
+&lt;div class="transition-all duration-300"&gt;...&lt;/div&gt;
+
+&lt;!-- Faqat rang --&gt;
+&lt;div class="transition-colors duration-200"&gt;...&lt;/div&gt;
+
+&lt;!-- Faqat transform --&gt;
+&lt;div class="transition-transform hover:scale-110 hover:rotate-3"&gt;...&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>group hover</h3>
+<pre><code class="language-html">&lt;!-- Ota element hover bo'lganda farzandni o'zgartirish --&gt;
+&lt;div class="group bg-white rounded-xl p-6 hover:bg-blue-600 transition"&gt;
+  &lt;h3 class="text-gray-800 group-hover:text-white font-bold"&gt;Sarlavha&lt;/h3&gt;
+  &lt;p class="text-gray-500 group-hover:text-blue-200"&gt;Tavsif...&lt;/p&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">✨ <code>transition duration-300</code> ko'pgina holatlarda silliq ko'rinish beradi. Tailwind animatsiyalar uchun <code>animate-spin</code>, <code>animate-pulse</code>, <code>animate-bounce</code> klasslarini ham beradi.</div>
+        `
+      },
+      {
+        id: "tw-chegara-soya",
+        icon: "🔲",
+        title: "Chegara va soya",
+        content: `
+<h3>Chegara (Border)</h3>
+<pre><code class="language-html">&lt;!-- Chegara qalinligi --&gt;
+&lt;div class="border"&gt;1px chegara&lt;/div&gt;
+&lt;div class="border-2"&gt;2px chegara&lt;/div&gt;
+&lt;div class="border-4"&gt;4px chegara&lt;/div&gt;
+&lt;div class="border-8"&gt;8px chegara&lt;/div&gt;
+
+&lt;!-- Faqat bitta tomon --&gt;
+&lt;div class="border-t"&gt;Faqat yuqori&lt;/div&gt;
+&lt;div class="border-b-2"&gt;Pastdan 2px&lt;/div&gt;
+&lt;div class="border-l-4 border-blue-500"&gt;Chapdan 4px ko'k&lt;/div&gt;
+
+&lt;!-- Chegara rangi --&gt;
+&lt;div class="border-2 border-red-500"&gt;Qizil chegara&lt;/div&gt;
+&lt;div class="border border-gray-200"&gt;Och kulrang chegara&lt;/div&gt;
+
+&lt;!-- Chegara uslubi --&gt;
+&lt;div class="border-2 border-dashed border-blue-400"&gt;Nuqtali&lt;/div&gt;
+&lt;div class="border-2 border-dotted"&gt;Puentir&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Border Radius (Yumaloq burchaklar)</h3>
+<pre><code class="language-html">&lt;div class="rounded-none"&gt;0px&lt;/div&gt;
+&lt;div class="rounded-sm"&gt;2px&lt;/div&gt;
+&lt;div class="rounded"&gt;4px&lt;/div&gt;
+&lt;div class="rounded-md"&gt;6px&lt;/div&gt;
+&lt;div class="rounded-lg"&gt;8px&lt;/div&gt;
+&lt;div class="rounded-xl"&gt;12px&lt;/div&gt;
+&lt;div class="rounded-2xl"&gt;16px&lt;/div&gt;
+&lt;div class="rounded-3xl"&gt;24px&lt;/div&gt;
+&lt;div class="rounded-full"&gt;50% (aylana)&lt;/div&gt;
+
+&lt;!-- Alohida burchaklar --&gt;
+&lt;div class="rounded-t-xl"&gt;Yuqori burchaklar&lt;/div&gt;
+&lt;div class="rounded-br-2xl"&gt;O'ng pastki burchak&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Box Shadow (Soya)</h3>
+<pre><code class="language-html">&lt;div class="shadow-sm"&gt;Kichik soya&lt;/div&gt;
+&lt;div class="shadow"&gt;Oddiy soya&lt;/div&gt;
+&lt;div class="shadow-md"&gt;O'rtacha soya&lt;/div&gt;
+&lt;div class="shadow-lg"&gt;Katta soya&lt;/div&gt;
+&lt;div class="shadow-xl"&gt;Juda katta soya&lt;/div&gt;
+&lt;div class="shadow-2xl"&gt;Eng katta soya&lt;/div&gt;
+&lt;div class="shadow-none"&gt;Soyasiz&lt;/div&gt;
+
+&lt;!-- Ichki soya --&gt;
+&lt;div class="shadow-inner"&gt;Ichki soya&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Karta komponenti misoli</h3>
+<pre><code class="language-html">&lt;div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100
+            hover:shadow-xl transition-shadow duration-300"&gt;
+  &lt;div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4"&gt;
+    &lt;span class="text-blue-600 text-xl"&gt;⭐&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="font-bold text-gray-800 text-lg mb-2"&gt;Xizmat nomi&lt;/h3&gt;
+  &lt;p class="text-gray-500 text-sm"&gt;Xizmat tavsifi bu yerda...&lt;/p&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">🎨 Zamonaviy dizaynda <code>rounded-xl shadow-md</code> kombinatsiyasi eng ko'p ishlatiladigan karta uslubi. <code>hover:shadow-xl transition</code> qo'shib, silliq interaktivlik bering.</div>
+        `
+      },
+      {
+        id: "tw-dark-mode",
+        icon: "🌙",
+        title: "Dark Mode",
+        content: `
+<h3>Tailwind Dark Mode</h3>
+<p>Tailwind CSS o'rnatilgan dark mode qo'llab-quvvatlashiga ega. <code>dark:</code> prefiksi yordamida tun rejimi uchun uslublar beriladi.</p>
+
+<h3>Sozlash</h3>
+<pre><code class="language-javascript">// tailwind.config.js
+module.exports = {
+  darkMode: 'class', // yoki 'media'
+  // ...
+}</code><span class="code-lang">javascript</span></pre>
+
+<h3>Ikki rejim: class va media</h3>
+<pre><code class="language-html">&lt;!-- 'media' rejim: OS sozlamasiga qarab avtomatik --&gt;
+&lt;!-- 'class' rejim: &lt;html&gt; ga 'dark' klassi qo'shilganda ishlaydi --&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>dark: prefiksi bilan uslub berish</h3>
+<pre><code class="language-html">&lt;div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-8"&gt;
+  &lt;h1 class="text-2xl font-bold text-gray-800 dark:text-white"&gt;
+    Sarlavha
+  &lt;/h1&gt;
+  &lt;p class="text-gray-600 dark:text-gray-300"&gt;
+    Kunduz va tun rejimida ishlaydi.
+  &lt;/p&gt;
+  &lt;button class="bg-blue-600 dark:bg-blue-400 text-white px-4 py-2 rounded"&gt;
+    Tugma
+  &lt;/button&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>JavaScript bilan rejim almashtirish</h3>
+<pre><code class="language-javascript">// Rejim almashtiruvi
+const tugma = document.getElementById('tema-tugma');
+
+tugma.addEventListener('click', () =&gt; {
+  document.documentElement.classList.toggle('dark');
+
+  // localStorage da saqlash
+  const tunRejimi = document.documentElement.classList.contains('dark');
+  localStorage.setItem('tema', tunRejimi ? 'tun' : 'kunduz');
+});
+
+// Sahifa yuklanganda saqlangan rejimni yuklash
+const saqlangan = localStorage.getItem('tema');
+if (saqlangan === 'tun') {
+  document.documentElement.classList.add('dark');
+}</code><span class="code-lang">javascript</span></pre>
+
+<h3>To'liq dark mode misoli</h3>
+<pre><code class="language-html">&lt;body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300"&gt;
+  &lt;nav class="bg-white dark:bg-gray-800 shadow border-b border-gray-200 dark:border-gray-700"&gt;
+    &lt;div class="flex items-center justify-between px-6 py-4"&gt;
+      &lt;span class="font-bold text-gray-800 dark:text-white"&gt;Logo&lt;/span&gt;
+      &lt;button id="tema-tugma"
+              class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white"&gt;
+        🌙
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+&lt;/body&gt;</code><span class="code-lang">html</span></pre>
+
+<div class="info-box">🌙 Dark mode foydalanuvchi tajribasini yaxshilaydi va ko'zni charchashdan saqlaydi. <code>transition-colors duration-300</code> qo'shib, rejim almashishini silliq qiling.</div>
+        `
+      },
+      {
+        id: "tw-komponentlar",
+        icon: "🧩",
+        title: "Komponentlar yaratish",
+        content: `
+<h3>Tailwind bilan komponentlar</h3>
+<p>Tailwind utility klasslar bilan ishlash dastlab ko'p ko'rinishi mumkin. Ammo ularni komponentlarga ajratish, @apply ishlatish yoki JavaScript asosidagi frameworklarda class birlashtirish orqali tartibli kod yoziladi.</p>
+
+<h3>Tugma komponenti</h3>
+<pre><code class="language-html">&lt;!-- Asosiy tugma --&gt;
+&lt;button class="bg-blue-600 hover:bg-blue-700 active:bg-blue-800
+               text-white font-semibold px-6 py-3 rounded-xl
+               transition duration-200 shadow-md hover:shadow-lg
+               focus:outline-none focus:ring-2 focus:ring-blue-400"&gt;
+  Asosiy tugma
+&lt;/button&gt;
+
+&lt;!-- Ikkinchi darajali tugma --&gt;
+&lt;button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600
+               hover:text-white font-semibold px-6 py-3 rounded-xl
+               transition duration-200"&gt;
+  Ikkinchi tugma
+&lt;/button&gt;
+
+&lt;!-- Xavfli tugma --&gt;
+&lt;button class="bg-red-600 hover:bg-red-700 text-white font-semibold
+               px-6 py-3 rounded-xl transition duration-200"&gt;
+  O'chirish
+&lt;/button&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Input komponenti</h3>
+<pre><code class="language-html">&lt;div class="flex flex-col gap-1"&gt;
+  &lt;label class="text-sm font-medium text-gray-700"&gt;
+    Email manzil
+  &lt;/label&gt;
+  &lt;input
+    type="email"
+    placeholder="email@misol.uz"
+    class="border border-gray-300 rounded-lg px-4 py-2.5 text-gray-800
+           focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100
+           placeholder:text-gray-400 transition"
+  /&gt;
+  &lt;p class="text-xs text-gray-500"&gt;Haqiqiy email kiriting&lt;/p&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>Xabar (Alert) komponenti</h3>
+<pre><code class="language-html">&lt;!-- Muvaffaqiyat --&gt;
+&lt;div class="flex items-center gap-3 bg-green-50 border border-green-200
+            text-green-800 px-4 py-3 rounded-lg"&gt;
+  &lt;span&gt;✅&lt;/span&gt;
+  &lt;p class="text-sm font-medium"&gt;Muvaffaqiyatli saqlandi!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Xato --&gt;
+&lt;div class="flex items-center gap-3 bg-red-50 border border-red-200
+            text-red-800 px-4 py-3 rounded-lg"&gt;
+  &lt;span&gt;❌&lt;/span&gt;
+  &lt;p class="text-sm font-medium"&gt;Xatolik yuz berdi!&lt;/p&gt;
+&lt;/div&gt;</code><span class="code-lang">html</span></pre>
+
+<h3>@apply bilan CSS da saqlash</h3>
+<pre><code class="language-css">/* styles.css */
+@layer components {
+  .btn-asosiy {
+    @apply bg-blue-600 hover:bg-blue-700 text-white
+           font-semibold px-6 py-3 rounded-xl
+           transition duration-200;
+  }
+
+  .karta {
+    @apply bg-white rounded-2xl shadow-md p-6
+           border border-gray-100 hover:shadow-lg transition;
+  }
+}</code><span class="code-lang">css</span></pre>
+
+<div class="info-box">🧩 Tailwind bilan React/Vue/Angular ishlashda har bir komponent alohida fayl bo'ladi — shu sababli uzun klasslar muammo tug'dirmaydi. <code>clsx</code> yoki <code>cn</code> kutubxonalari ham klasslarni boshqarishga yordam beradi.</div>
+        `
+      }
+    ]
   }
 };

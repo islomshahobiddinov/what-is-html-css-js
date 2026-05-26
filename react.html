@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript — Web Dasturlash O'rganish</title>
+  <title>React — Web Dasturlash O'rganish</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page-js">
+<body class="page-react">
   <div class="app" id="app">
 
     <!-- ── CHAP SIDEBAR ── -->
@@ -31,13 +31,13 @@
             </a>
           </li>
           <li>
-            <a href="js.html" class="nav-link active">
+            <a href="js.html" class="nav-link">
               <span class="nav-link-icon">⚡</span>
               <span>JavaScript</span>
             </a>
           </li>
           <li>
-            <a href="react.html" class="nav-link">
+            <a href="react.html" class="nav-link active">
               <span class="nav-link-icon">⚛️</span>
               <span>React</span>
             </a>
@@ -59,11 +59,11 @@
     <main class="main-content">
       <div class="page-hero">
         <div class="hero-badge">
-          <span>⚡</span> Dasturlash tili
+          <span>⚛️</span> UI kutubxonasi
         </div>
-        <h1 class="hero-title">JavaScript</h1>
+        <h1 class="hero-title">React</h1>
         <p class="hero-sub">
-          Veb-sahifalarni interaktiv va dinamik qiluvchi dasturlash tili. Brauzerda va server tomonida (Node.js) ishlaydi. Dunyo bo'yicha eng mashhur dasturlash tillaridan biri.
+          Facebook tomonidan yaratilgan komponent asosidagi UI kutubxonasi. Virtual DOM yordamida tez va samarali foydalanuvchi interfeyslari yaratish uchun ishlatiladi.
         </p>
         <div class="hero-stats">
           <div class="stat">
@@ -71,11 +71,11 @@
             <span class="stat-label">Mavzu</span>
           </div>
           <div class="stat">
-            <span class="stat-num">1995</span>
+            <span class="stat-num">2013</span>
             <span class="stat-label">Yaratilgan yil</span>
           </div>
           <div class="stat">
-            <span class="stat-num">ES2024</span>
+            <span class="stat-num">React 19</span>
             <span class="stat-label">Joriy versiya</span>
           </div>
         </div>
@@ -99,7 +99,7 @@
           <div class="topic-hdr-top">
             <div>
               <div class="topic-hdr-title" id="topicTitle"></div>
-              <div class="topic-hdr-num">JavaScript mavzusi</div>
+              <div class="topic-hdr-num">React mavzusi</div>
             </div>
             <button class="topic-hdr-close" onclick="closeSidebar()" title="Yopish">✕</button>
           </div>
@@ -122,6 +122,6 @@
 
   <script src="data.js"></script>
   <script src="app.js"></script>
-  <script>initPage('js');</script>
+  <script>initPage('react');</script>
 </body>
 </html>
